@@ -15,4 +15,16 @@ attr_reader :summary
     @summary["current_observation"]["weather"]
   end
 
+  def get_temp_f
+    @summary["current_observation"]["temp_f"]
+  end
+
+  def get_temp_c
+    @summary["current_observation"]["temp_c"]
+  end
+
+  def get_wind
+    @summary["current_observation"]["wind_string"]
+  end
+
 end
