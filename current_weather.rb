@@ -11,4 +11,8 @@ attr_reader :summary
     @summary["current_observation"]["display_location"]["zip"]
   end
 
+  def weather_condition
+    @summary["current_observation"]["weather"]
+  end
+
 end
