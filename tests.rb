@@ -2,18 +2,19 @@ require 'minitest/autorun'
 require 'minitest/pride'
 
 require './current_weather.rb'
-require './forecast'
+require './weather_forecast'
 require './hurricane'
 require './astronomy'
 require './weather_alert'
 require 'httparty'
+require 'json'
 
 class ConsumeApiTest < Minitest::Test
 
   def test_classes_exists
     assert CurrentWeather
     assert WeatherAlert
-    assert Forecast
+    assert WeatherForecast
     assert Hurricane
     assert Astronomy
   end
@@ -21,6 +22,10 @@ class ConsumeApiTest < Minitest::Test
   def test_currentweather_accepts_zip
     assert CurrentWeather.new(zip: "47432")
   end
+
+  # def test_get_city_state_string
+  #   asggkhdsf;lghdks;lghkfdlhg
+  # end
 
   def test_response_for_current_weather
     todays_weather = CurrentWeather.new(zip: "47432")

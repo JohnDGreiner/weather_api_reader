@@ -1,5 +1,5 @@
 require 'httparty'
 
-class Forecast
+class WeatherForecast
 
 end

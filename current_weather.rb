@@ -11,16 +11,22 @@ attr_reader :conditions_response
     @conditions_response["current_observation"]["display_location"]["zip"]
   end
 
+  def city_state_string
+    city =  @conditions_response["current_observation"]["display_location"]["city"]
+    state = @conditions_response["current_observation"]["display_location"]["state"]
+    return "#{city}, #{state}"
+  end
+
   def weather_condition
     @conditions_response["current_observation"]["weather"]
   end
 
   def get_temp_f
-    @conditions_response["current_observation"]["temp_f"]
+    @conditions_response["current_observation"]["temp_f"].to_s + " °F"
   end
 
   def get_temp_c
-    @conditions_response["current_observation"]["temp_c"]
+    @conditions_response["current_observation"]["temp_c"].to_s + " °C"
   end
 
   def get_wind
