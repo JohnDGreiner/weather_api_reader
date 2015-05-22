@@ -9,6 +9,12 @@ require './weather_alert'
 require 'httparty'
 require 'json'
 
+class CurrentWeather
+  def get_json
+    JSON.parse(File.open("current_weather.json").read)
+  end
+end
+
 class ConsumeApiTest < Minitest::Test
 
   def test_classes_exists
@@ -27,9 +33,9 @@ class ConsumeApiTest < Minitest::Test
   #   asggkhdsf;lghdks;lghkfdlhg
   # end
 
-  def test_response_for_current_weather
-    todays_weather = CurrentWeather.new(zip: "47432")
-    assert_equal "47432", todays_weather.get_zip
+  def test_get_zip
+    test_weather = CurrentWeather.new(zip: "47432")
+    assert_equal "47432", test_weather.get_zip
   end
 
   def test_response_for_alerts

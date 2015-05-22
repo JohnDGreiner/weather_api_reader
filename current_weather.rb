@@ -1,10 +1,11 @@
 require 'httparty'
 
 class CurrentWeather
-attr_reader :conditions_response
+attr_reader :conditions_response, :zip
 
   def initialize(zip:)
-    @conditions_response = HTTParty.get("http://api.wunderground.com/api/#{ENV["WUNDERGROUND_KEY"]}/conditions/q/#{zip}.json")
+    @zip = zip
+    @conditions_response = get_json
   end
 
   def get_zip
@@ -31,6 +32,10 @@ attr_reader :conditions_response
 
   def get_wind
     @conditions_response["current_observation"]["wind_string"]
+  end
+
+  def get_json
+    HTTParty.get("http://api.wunderground.com/api/#{ENV["WUNDERGROUND_KEY"]}/conditions/q/#{zip}.json")
   end
 
 end
