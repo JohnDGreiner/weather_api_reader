@@ -33,6 +33,12 @@ class WeatherForecast
   end
 end
 
+class Hurricane
+  def get_json
+    JSON.parse(File.open("hurricane.json").read)
+  end
+end
+
 class ConsumeApiTest < Minitest::Test
 
   def test_classes_exists
@@ -128,5 +134,15 @@ class ConsumeApiTest < Minitest::Test
     assert_equal 20, test_tenday.day_descs.length
     assert_equal "Lots of sunshine. High around 75F. Winds W at 10 to 15 mph.",
       test_tenday.day_descs[0]
+  end
+
+  def test_number_of_hurricanes_tracked
+    test_hurricanes = Hurricane.new
+    assert_equal 1, test_hurricanes.number_tracked
+  end
+
+  def test_number_tracked_string
+    test_hurricanes = Hurricane.new
+    assert_equal "We are currently tracking 1 Hurricane.", test_hurricanes.number_tracked_string
   end
 end
