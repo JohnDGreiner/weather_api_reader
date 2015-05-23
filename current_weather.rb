@@ -33,7 +33,7 @@ attr_reader :conditions_response, :zip
   end
 
   def get_json
-    HTTParty.get("http://api.wunderground.com/api/#{ENV["WUNDERGROUND_KEY"]}/conditions/q/#{zip}.json")
+    HTTParty.get("http://api.wunderground.com/api/#{ENV["WUNDERGROUND_KEY"]}/conditions/q/#{@zip}.json")
   end
 
 end

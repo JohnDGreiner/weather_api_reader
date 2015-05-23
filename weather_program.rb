@@ -8,8 +8,8 @@ def current_weather_print(todays_weather)
   puts "\n"
   puts "#{Time.new}"
   puts "-"*60
-  puts "In #{todays_weather.city_state_string} it is currently #{todays_weather.get_temp_f} and #{todays_weather.weather_condition} outside."
-  puts "Wind: #{todays_weather.get_wind}."
+  puts "In #{todays_weather.city_state} it is currently #{todays_weather.temp_f} and #{todays_weather.condition} outside."
+  puts "Wind: #{todays_weather.wind}."
   puts "\n"
 end
 
@@ -26,3 +26,6 @@ zipcode = gets.chomp.to_s
 # run methods on input
 todays_weather = CurrentWeather.new(zip: zipcode)
 current_weather_print(todays_weather)
+
+todays_alerts = WeatherAlert.new(zip: zipcode)
+todays_alerts.num_of_alerts
