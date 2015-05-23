@@ -101,6 +101,15 @@ class ConsumeApiTest < Minitest::Test
     assert_equal "7:00 PM CDT on May 23, 2015", test_alerts.alert_expires[0]
   end
 
+  def test_sunrise_time
+    test_astronomy = Astronomy.new(zip: "47432")
+    assert_equal "6:29", test_astronomy.sunrise
+  end
+
+  def test_sunset_time
+    test_astronomy = Astronomy.new(zip: "47432")
+    assert_equal "20:57", test_astronomy.sunset
+  end
 
 
 end
