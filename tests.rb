@@ -117,5 +117,16 @@ class ConsumeApiTest < Minitest::Test
     assert_equal "20:57", test_astronomy.sunset
   end
 
+  def test_day_names_array
+    test_tenday = WeatherForecast.new(zip: "47432")
+    assert_equal 20, test_tenday.day_names.length
+    assert_equal "Friday", test_tenday.day_names[0]
+  end
 
+  def test_day_descs_array
+    test_tenday = WeatherForecast.new(zip: "47432")
+    assert_equal 20, test_tenday.day_descs.length
+    assert_equal "Lots of sunshine. High around 75F. Winds W at 10 to 15 mph.",
+      test_tenday.day_descs[0]
+  end
 end
