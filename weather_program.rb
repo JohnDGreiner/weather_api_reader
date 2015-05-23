@@ -7,17 +7,19 @@ require './weather_alert'
 def current_weather_print(todays_weather)
   puts "\n"
   puts "#{Time.new}"
+  puts "\n"
   puts "-"*60
   puts "In #{todays_weather.city_state} it is currently #{todays_weather.temp_f} and #{todays_weather.condition} outside."
   puts "Wind: #{todays_weather.wind}."
+
 end
 
 def alerts_print(todays_alerts)
   puts "\n"
   puts todays_alerts.num_of_alert_string
   counter = 0
-    until todays_alerts.num_of_alerts == 0 || counter > todays_alerts.num_of_alerts
-      puts todays_alerts.alert_descs[counter] + " until " + todays_alerts.alert_expires[counter]
+    until todays_alerts.num_of_alerts == 0 || counter == todays_alerts.num_of_alerts
+      puts "#{todays_alerts.alert_descs[counter]} until #{todays_alerts.alert_expires[counter]}"
       counter += 1
     end
   puts "\n"

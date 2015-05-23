@@ -28,18 +28,21 @@ class WeatherAlert
     descs = []
     @alerts_response["alerts"].each { |a|
       descs << a["description"]}
+    descs
   end
 
   def alert_dates
     dates = []
     @alerts_response["alerts"].each { |d|
       dates << d["date"]}
+    dates
   end
 
   def alert_expires
     expires = []
     @alerts_response["alerts"].each { |e|
       expires << e["expires"]}
+    expires
   end
 
   def get_json
