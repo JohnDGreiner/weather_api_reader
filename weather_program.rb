@@ -15,6 +15,11 @@ end
 def alerts_print(todays_alerts)
   puts "\n"
   puts todays_alerts.num_of_alert_string
+  counter = 0
+    until todays_alerts.num_of_alerts == 0 || counter > todays_alerts.num_of_alerts
+      puts todays_alerts.alert_descs[counter] + " until " + todays_alerts.alert_expires[counter]
+      counter += 1
+    end
   puts "\n"
 end
 
@@ -28,7 +33,6 @@ puts "\n"
 puts "Please enter a zipcode for the weather in that area."
 zipcode = gets.chomp.to_s
 
-# run methods on input
 todays_weather = CurrentWeather.new(zip: zipcode)
 current_weather_print(todays_weather)
 
