@@ -27,6 +27,12 @@ class Astronomy
   end
 end
 
+class WeatherForecast
+  def get_json
+    JSON.parse(File.open("weather_forecast.json").read)
+  end
+end
+
 class ConsumeApiTest < Minitest::Test
 
   def test_classes_exists
