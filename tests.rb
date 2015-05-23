@@ -31,45 +31,48 @@ class ConsumeApiTest < Minitest::Test
     assert Astronomy
   end
 
+  # def test_api_is_up
+  #   good_response = #<Net::HTTPOK 200 OK readbody=true>
+  #   assert_equal good_response, today.summary.header
+  # end
+
   def test_currentweather_accepts_zip
     assert CurrentWeather.new(zip: "47432")
   end
 
-  # def test_get_city_state_string
-  #   asggkhdsf;lghdks;lghkfdlhg
-  # end
+  def test_get_city_state
+    test_weather = CurrentWeather.new(zip: "47432")
+    assert_equal "French Lick, IN", test_weather.city_state
+  end
 
   def test_get_zip
     test_weather = CurrentWeather.new(zip: "47432")
-    assert_equal "47432", test_weather.get_zip
+    assert_equal "47432", test_weather.zip
   end
-
-  def test_response_for_alerts
-    todays_alerts = WeatherAlert.new(zip: "47432")
-    refute_equal nil, todays_alerts.number_of_alerts
-    # good_response = #<Net::HTTPOK 200 OK readbody=true>
-    # assert_equal good_response, today.summary.header
-  end
-
 
   def test_weather_for_nil
     todays_weather = CurrentWeather.new(zip: "47432")
-    refute_equal nil, todays_weather.weather_condition
+    assert_equal "Clear", todays_weather.condition
   end
 
   def test_temp_f_for_nil
     todays_weather = CurrentWeather.new(zip: "47432")
-    refute_equal nil, todays_weather.get_temp_f
+    assert_equal "75.7 °F", todays_weather.temp_f
   end
 
   def test_temp_for_nil
     todays_weather = CurrentWeather.new(zip: "47432")
-    refute_equal nil, todays_weather.get_temp_c
+    assert_equal "24.3 °C", todays_weather.temp_c
   end
 
   def test_wind_for_nil
     todays_weather = CurrentWeather.new(zip: "47432")
-    refute_equal nil, todays_weather.get_wind
+    assert_equal "From the WSW at 2.2 MPH Gusting to 6.3 MPH", todays_weather.wind
+  end
+
+  def test_number_of_alerts
+    todays_alerts = WeatherAlert.new(zip: "47432")
+    assert_equal 1, todays_alerts.num_of_alerts
   end
 
 end

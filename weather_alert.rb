@@ -7,7 +7,7 @@ class WeatherAlert
     @alerts_response = get_json
   end
 
-  def number_of_alerts
+  def num_of_alerts
     @alerts_response["alerts"].length
   end
 
