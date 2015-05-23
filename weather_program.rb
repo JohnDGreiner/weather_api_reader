@@ -11,7 +11,6 @@ def current_weather_print(todays_weather)
   puts "-"*60
   puts "In #{todays_weather.city_state} it is currently #{todays_weather.temp_f} and #{todays_weather.condition} outside."
   puts "Wind: #{todays_weather.wind}."
-
 end
 
 def alerts_print(todays_alerts)
@@ -23,6 +22,10 @@ def alerts_print(todays_alerts)
       counter += 1
     end
   puts "\n"
+end
+
+def sun_print(todays_astronomy)
+  puts "Sunrise - #{todays_astronomy.sunrise}, Sunset - #{todays_astronomy.sunset}"
 end
 
 
@@ -37,6 +40,9 @@ zipcode = gets.chomp.to_s
 
 todays_weather = CurrentWeather.new(zip: zipcode)
 current_weather_print(todays_weather)
+
+todays_astronomy = Astronomy.new(zip: zipcode)
+sun_print(todays_astronomy)
 
 todays_alerts = WeatherAlert.new(zip: zipcode)
 alerts_print(todays_alerts)
