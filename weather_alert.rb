@@ -2,6 +2,7 @@ require 'httparty'
 
 class WeatherAlert
   attr_reader :zip
+
   def initialize(zip:)
     @zip = zip
     @alerts_response = get_json
