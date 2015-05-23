@@ -71,15 +71,30 @@ class ConsumeApiTest < Minitest::Test
   end
 
   def test_number_of_alerts_string
-    test_alerts = WeatherAlert.new(zip: "47432")
+    test_alerts = WeatherAlert.new(zip: "12522")
     assert_equal "There is 1 weather alert.", test_alerts.num_of_alert_string
   end
 
-  def test_number_of_alerts
-    test_alerts = WeatherAlert.new(zip: "47432")
-    assert_equal 1, test_alerts.alert_num
+  def test_alert_num
+    test_alerts = WeatherAlert.new(zip: "12522")
+    assert_equal 1, test_alerts.num_of_alerts
   end
 
-  # def test_alert
+  def test_alert_descriptions
+    test_alerts = WeatherAlert.new(zip: "12522")
+    assert "Frost Advisory", test_alerts.alert_descs[0]
+  end
+
+  def test_alert_date
+    test_alerts = WeatherAlert.new(zip: "12522")
+    assert "3:38 am EDT on May 22, 2015", test_alerts.alert_dates[0]
+  end
+
+  def test_alert_expires
+    test_alerts = WeatherAlert.new(zip: "12522")
+    assert "8:00 AM EDT on May 23, 2015", test_alerts.alert_expires[0]
+  end
+
+
 
 end

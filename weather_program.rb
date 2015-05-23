@@ -9,7 +9,7 @@ def current_weather_print(todays_weather)
   puts "#{Time.new}"
   puts "-"*60
   puts "In #{todays_weather.city_state} it is currently #{todays_weather.temp_f} and #{todays_weather.condition} outside."
-  puts "Wind: #{todays_weather.wind}."git 
+  puts "Wind: #{todays_weather.wind}."
 end
 
 def alerts_print(todays_alerts)
