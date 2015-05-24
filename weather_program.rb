@@ -15,7 +15,9 @@ end
 
 def alerts_print(todays_alerts)
   puts "\n"
-  puts todays_alerts.num_of_alert_string.red
+  puts "Weather Alerts".red
+  puts "-"*60
+  puts todays_alerts.num_of_alert_string
   counter = 0
     until todays_alerts.num_of_alerts == 0 || counter == todays_alerts.num_of_alerts
       puts "  #{counter+1}. #{todays_alerts.alert_descs[counter]} until #{todays_alerts.alert_expires[counter]}"
@@ -47,6 +49,21 @@ def clear_terminal
   system "clear" or system "cls"
 end
 
+def hurricanes_print(todays_hurricanes)
+  puts "Hurricane Tracking".red
+  puts "-"*60
+  puts todays_hurricanes.number_tracked_string
+  puts "\n"
+  todays_hurricanes.number_tracked.times do |h|
+    puts "Name: #{todays_hurricanes.names[h]}"
+    puts "Category: #{todays_hurricanes.categories[h]}"
+    puts "Windspeed: #{todays_hurricanes.windspeed_mph[h]}MPH"
+    puts "Located: #{todays_hurricanes.lats[h]} and #{todays_hurricanes.lons[h]}"
+    puts "-"*20
+  end
+  puts "\n"
+end
+
 clear_terminal
 # gets zipcode from user
 puts "\n"
@@ -66,3 +83,9 @@ alerts_print(todays_alerts)
 
 todays_tenday = WeatherForecast.new(zip: zipcode)
 tenday_print(todays_tenday)
+
+todays_hurricanes = Hurricane.new
+hurricanes_print(todays_hurricanes)
+
+puts "Have a nice day!".light_blue
+puts "\n"
