@@ -145,4 +145,30 @@ class ConsumeApiTest < Minitest::Test
     test_hurricanes = Hurricane.new
     assert_equal "We are currently tracking 1 Hurricane.", test_hurricanes.number_tracked_string
   end
+
+  def test_category_of_hurricane
+    test_hurricanes = Hurricane.new
+    assert_equal "Invest", test_hurricanes.categories[0]
+  end
+
+  def test_name_of_hurricane
+    test_hurricanes = Hurricane.new
+    assert_equal "90E", test_hurricanes.names[0]
+  end
+
+  def test_wind_speed
+    test_hurricanes = Hurricane.new
+    assert_equal 30, test_hurricanes.windspeed_mph[0]
+  end
+
+  def test_lats
+    test_hurricanes = Hurricane.new
+    assert_equal 5.8, test_hurricanes.lats[0]
+  end
+
+  def test_lons
+    test_hurricanes = Hurricane.new
+    assert_equal -135.6, test_hurricanes.lons[0]
+  end
+
 end
