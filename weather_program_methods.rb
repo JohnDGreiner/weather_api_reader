@@ -14,7 +14,7 @@ def input_validation(user_input)
     if user_input.length != 5
       puts "Incorrect entry.".red
       puts "\n"
-      puts "Please enter a Zipcode or City, State for the weather in that area."
+      puts "Please enter a Zip code or City, State for the weather in that area."
       user_input = gets.chomp
       input_validation(user_input)
     else
