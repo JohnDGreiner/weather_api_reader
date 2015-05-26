@@ -1,7 +1,6 @@
 require 'httparty'
 
 class WeatherAlert
-  attr_reader :zip
 
   def initialize(zip:)
     @zip = zip
@@ -25,24 +24,15 @@ class WeatherAlert
   end
 
   def alert_descs
-    descs = []
-    @alerts_response["alerts"].each { |a|
-      descs << a["description"]}
-    descs
+    @alerts_response["alerts"].map { |d| d["description"]}
   end
 
   def alert_dates
-    dates = []
-    @alerts_response["alerts"].each { |d|
-      dates << d["date"]}
-    dates
+    @alerts_response["alerts"].map { |d| d["date"]}
   end
 
   def alert_expires
-    expires = []
-    @alerts_response["alerts"].each { |e|
-      expires << e["expires"]}
-    expires
+    @alerts_response["alerts"].map { |e| e["expires"]}
   end
 
   def get_json
