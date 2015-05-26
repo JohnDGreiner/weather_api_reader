@@ -1,7 +1,6 @@
 require 'httparty'
 
 class WeatherForecast
-  attr_reader :zip
 
   def initialize(zip:)
     @zip = zip
@@ -9,17 +8,11 @@ class WeatherForecast
   end
 
   def day_names
-    periods = []
-    @forecast_response["forecast"]["txt_forecast"]["forecastday"].each { |f|
-      periods << f["title"]}
-      periods
+    @forecast_response["forecast"]["txt_forecast"]["forecastday"].map { |f| f["title"]}
   end
 
   def day_descs
-    periods = []
-    @forecast_response["forecast"]["txt_forecast"]["forecastday"].each { |f|
-      periods << f["fcttext"]}
-      periods
+    @forecast_response["forecast"]["txt_forecast"]["forecastday"].map { |f| f["fcttext"]}
   end
 
   def get_json
