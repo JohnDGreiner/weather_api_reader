@@ -1,7 +1,6 @@
 require 'httparty'
 
 class Astronomy
-  attr_reader :zip
 
   def initialize(zip:)
     @zip = zip

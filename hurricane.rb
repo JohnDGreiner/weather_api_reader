@@ -21,38 +21,23 @@ class Hurricane
   end
 
   def categories
-    cats = []
-    @hurricane_response["currenthurricane"].each { |h|
-      cats << h["Current"]["Category"]}
-    cats
+    @hurricane_response["currenthurricane"].map { |h| h["Current"]["Category"]}
   end
 
   def names
-    names = []
-    @hurricane_response["currenthurricane"].each { |n|
-      names << n["stormInfo"]["stormName"]}
-    names
+    @hurricane_response["currenthurricane"].map { |n| n["stormInfo"]["stormName"]}
   end
 
   def windspeed_mph
-    winds = []
-    @hurricane_response["currenthurricane"].each { |w|
-      winds << w["Current"]["WindSpeed"]["Mph"]}
-    winds
+    @hurricane_response["currenthurricane"].map { |w| w["Current"]["WindSpeed"]["Mph"]}
   end
 
   def lats
-    lats = []
-    @hurricane_response["currenthurricane"].each { |lat|
-      lats << lat["Current"]["lat"]}
-    lats
+    @hurricane_response["currenthurricane"].map { |lat| lat["Current"]["lat"]}
   end
 
   def lons
-    lons = []
-    @hurricane_response["currenthurricane"].each { |lon|
-      lons << lon["Current"]["lon"]}
-    lons
+    @hurricane_response["currenthurricane"].map { |lon| lon["Current"]["lon"]}
   end
 
   def get_json
