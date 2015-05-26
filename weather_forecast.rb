@@ -1,6 +1,7 @@
 require 'httparty'
 
 class WeatherForecast
+  attr_reader :zip
 
   def initialize(zip:)
     @zip = zip
