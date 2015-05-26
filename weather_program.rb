@@ -4,7 +4,7 @@ clear_terminal
 
 # gets zipcode or city, state from user
 puts "\n"
-puts "Please enter a Zip code or City, State for the weather in that area."
+puts "Please enter a 5 digit Zip code - "
 user_input = gets.chomp
 input_validation(user_input)
 
